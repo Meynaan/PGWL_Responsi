@@ -6,6 +6,7 @@
         body {
             height: 100%;
             width: 100%;
+            color: peachpuff;
         }
 
 
@@ -15,11 +16,103 @@
             margin: 0;
         }
     </style>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+</head>
 @endsection
 
 
 @section('content')
-    <div id="map"></div>
+    <div class="container-fluid mt-3">
+        <div class="card" style="width: 100%;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ asset('images/CARD.png') }}" class="img-fluid rounded-start" alt="...">
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card text-bg-dark">
+                        <img src="{{ asset('images/5.png') }}" class="card-img" alt="...">
+                        <!-- Sesuaikan path gambar -->
+                        <div class="card-img-overlay">
+                            <figure class="text-end">
+                                <blockquote class="blockquote">
+                                    <br>
+                                    <br>
+                                    <p style="color: #000000" >Destinasi Wisata Kota Semarang.</p>
+                                </blockquote>
+                                <figcaption class="blockquote-footer">
+                                    Myn
+                                </figcaption>
+                            </figure>
+                            <br>
+
+                            <figure class="text-center mt-7 ">
+                                <blockquote class="blockquote">
+                                    <p style="color: #000000">Mau Kemana Kamu <br> Hari ini?</p>
+                                    <a href="https://github.com/Meynaan" class="btn btn-custom">GitHub</a>
+                                </blockquote>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- <div class="container-fluid mt-3 ">
+        <div class="card " style="width: 100%;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ asset('images/CARD.png') }}" class="img-fluid rounded-start" alt="...">
+                </div>
+
+                <div class="card text-bg-dark">
+                    <img src="..." class="card-img" alt="...">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small>Last updated 3 mins ago</small></p>
+                    </div>
+                </div> --}}
+
+    {{-- <div class="col-md-8" style="background-color: #ffd3bf;">
+                    <div class="card-body">
+                        <figure class="text-end">
+                            <blockquote class="blockquote">
+                                <p>Destinasi Wisata Kota Semarang.</p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer">
+                                Myn
+                            </figcaption>
+                        </figure>
+                        <br>
+                        <br>
+                        <br>
+                        <figure class="text-center mt-7 " >
+                            <blockquote class="blockquote">
+                                <p>Mau Kemana Kamu <br> Hari ini?</p>
+                                <a href="https://github.com/Meynaan" class="btn btn-primary">GitHub</a>
+                            </blockquote>
+                        </figure>
+                    </div>
+                </div> --}}
+
+    {{-- </div>
+    </div> --}}
+
+
+    <hr class="border border-danger border-2 opacity-50">
+    <div class="card mb-3 mt-3">
+
+        <div class="card-body">
+            <div id="map"></div>
+        </div>
+    </div>
+    </div>
+
+
+    {{-- <div id="map"></div> --}}
 @endsection
 
 @section('script')

@@ -9,7 +9,7 @@ class MapController extends Controller
     public function index()
     {
         $data = [
-            "title" => "Petaku",
+            "title" => "SIWARANG",
         ];
 
         // Check if user is logged in

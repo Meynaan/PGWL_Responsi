@@ -1,12 +1,25 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<style>
+    .max-w-7xl{
+        width: 100%;
+    }
+    .bg-white{
+
+        color: #fc896d;
+    }
+</style>
+
+
+<nav x-data="{ open: false }" class="bg-pink border-b border-gray-100" style="background-color:  #fc896d;">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="background-color:  #fc896d;">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <img src="{{ asset('images/3.png') }}" alt="Example Image" width="50" height="50"
+                    style="margin-right: 10px;">
+                        {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
                     </a>
                 </div>
 

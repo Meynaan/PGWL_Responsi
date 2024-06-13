@@ -15,13 +15,48 @@
     {{-- FontAwesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Courier+Prime&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Mystery+Quest&display=swap"
+        rel="stylesheet">
+
+
+
+    <style>
+        .body {
+            /* height: 100%;
+        width: 100%; */
+            color: peachpuff;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            color: #ffb3ac;
+        }
+
+        .h2 {
+            font-family: 'Press Start 2P', fantasy;
+        }
+    </style>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="1x1" href="{{ asset('images/2.png') }}">
+
+
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     @yield('styles')
+
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-fixed" style="background-color: #fc896d;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"> <i class="fa-solid fa-earth-africa"></i> {{ $title }}</a>
+            <a class="navbar-brand" href="#" style="display: flex; align-items: center;">
+                <img src="{{ asset('images/3.png') }}" alt="Example Image" width="50" height="50"
+                    style="margin-right: 10px;">
+                <h2 style="margin-top: 0;" id="h2"> {{ $title }}</h2>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -50,7 +85,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#infoModal"> <i class="fa-solid fa-circle-info" ></i> Info</a>
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#infoModal"> <i
+                                class="fa-solid fa-circle-info"></i> Info</a>
                     </li>
 
 
