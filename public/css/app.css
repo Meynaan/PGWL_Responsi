@@ -11,11 +11,11 @@ body {
 }
 .text-end .blockquote p {
     font-size:20px; /* Atur ukuran font sesuai keinginan Anda */
-    padding-right: 45px;
+    padding-right: 15px;
 }
 .text-end .blockquote-footer {
     font-size: 13px; /* Atur ukuran font sesuai keinginan Anda */
-    padding-right: 45px;
+    padding-right: 15px;
 }
 
 .navbar {
