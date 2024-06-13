@@ -20,8 +20,6 @@
             margin-left: 20px;
             margin-right: 20px;
         }
-
-
     </style>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -31,7 +29,7 @@
 
 @section('content')
     <div class="container-fluid mt-3">
-        <div class="card" style="width: 100%;">
+        <div class="card shadow" style="width: 100%;">
             <div class="row g-0">
                 <div class="col-md-4">
                     <img src="{{ asset('images/CARD.png') }}" class="img-fluid rounded-start" alt="...">
@@ -54,12 +52,16 @@
                             <br>
                             <br>
 
-                            <figure class="text-center mt-7 ">
+                            <figure class="text-center mt-7">
                                 <blockquote class="blockquote">
                                     <p style="color: #ffffff">Mau Kemana Kamu <br> Hari ini?</p>
-                                    <a href="https://github.com/Meynaan" class="btn btn-custom">GitHub</a>
+                                    <div class="d-inline-block">
+                                        <a href="https://github.com/Meynaan" class="btn btn-custom mx-2">GitHub</a>
+                                        <a href="{{ route('register') }}" class="btn btn-custom mx-2">Register</a>
+                                    </div>
                                 </blockquote>
                             </figure>
+
                         </div>
                     </div>
                 </div>
@@ -73,10 +75,10 @@
 
     {{-- <hr class="border border-danger border-2 opacity-50"> --}}
 
-    <div class="container-fluid mt-3">
+    <div class="container-fluid mt-3 shadow">
         <div class="row row-cols-1 row-cols-md-4 g-4">
             <div class="col">
-                <div class="card">
+                <div class="card shadow">
                     <img src="{{ asset('images/KL.jpg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h4 class="card-title">Kota Lama Semarang</h4>
@@ -88,7 +90,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card">
+                <div class="card shadow">
                     <img src="{{ asset('images/LS.jpg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h4 class="card-title">Lawang Sewu</h4>
@@ -100,7 +102,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card">
+                <div class="card shadow">
                     <img src="{{ asset('images/SP.jpg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h4 class="card-title">Klenteng Sam Poo Kong</h4>
@@ -112,7 +114,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card">
+                <div class="card shadow">
                     <img src="{{ asset('images/pm.jpeg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h4 class="card-title">Pantai Marina</h4>
@@ -125,6 +127,17 @@
             </div>
         </div>
     </div>
+
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+        <div class="container">
+            <p style="font-family: 'Merriweather', serif;">&copy; 2024 Hak Cipta: <a href="https://github.com/Meynaan" class="text-white">Myn</a></p>
+            <p style="font-family: 'Merriweather', serif;">
+                <i class="fa fa-home mr-2"></i> Jl. C Simanjutak No .76A, Sleman, Yogyakarta.<br>
+                <i class="fa fa-envelope mr-2"></i> meynaanjar@gmail.com <br>
+                <i class="fa fa-phone mr-2"></i> +62 812-2657-6820
+            </p>
+        </div>
+    </footer>
 @endsection
 
 @section('script')

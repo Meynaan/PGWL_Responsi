@@ -47,6 +47,9 @@
 
     @yield('styles')
 
+    <!-- Favicons -->
+    <link href="public/images/3.png" rel="icon">
+
 </head>
 
 <body>

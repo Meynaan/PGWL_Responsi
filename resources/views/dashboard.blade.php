@@ -1,5 +1,5 @@
-<x-app-layout >
-    <x-slot name="header" >
+<x-app-layout>
+    <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
@@ -17,17 +17,19 @@
                 margin: 0;
             }
 
-            .border{
+            .border {
                 margin-left: 20px;
                 margin-right: 20px;
             }
 
-            .card{
+            .card {
                 margin-left: 20px;
                 margin-right: 20px;
             }
+
             .body {
                 background-color: #fc896d;
+                /* background-color: #f83200; */
             }
         </style>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -37,28 +39,22 @@
     <div class="container py-12">
         <div class="card shadow">
             <div class="card-header">
-                <h3 class="card-title">Data</h3>
+                <h3 class="card-title">Data Wisata</h3>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col">
                         <div class="alert alert-primary" role="alert">
-                            <h4><i class="fa-solid fa-location-dot"></i> Total Points</h4>
+                            <h4><i class="fa-solid fa-location-dot"></i> Titik Wisata</h4>
                             <p style="font-size: 20pt">{{ $total_points }}</p>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="alert alert-warning " role="alert">
-                            <h4><i class="fa-solid fa-route"></i> Total Polylines</h4>
-                            <p style="font-size: 20pt">{{ $total_polylines }}</p>
-                        </div>
-                    </div>
-                    <div class="col">
+                    {{-- <div class="col">
                         <div class="alert alert-danger  " role="alert">
-                            <h4><i class="fa-solid fa-draw-polygon"></i> Total Polygons</h4>
+                            <h4><i class="fa-solid fa-draw-polygon"></i> Kecamatan</h4>
                             <p style="font-size: 20pt">{{ $total_polygons }}</p>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <hr>
                 <p>Anda login sebagai <b>{{ Auth::user()->name }}</b> dengan email <i>{{ Auth::user()->email }}</i></p>
@@ -66,7 +62,9 @@
         </div>
     </div>
 
-    <hr class="border border-danger border-2 opacity-50">
+    <div class="container-fluid mt-0">
+        <img src="{{ asset('images/line.png') }}" class="img-fluid rounded-start" alt="...">
+    </div>
     <div class="card mb-3 mt-3">
 
         <div class="card-body">
@@ -79,13 +77,98 @@
 
     <script>
         //Map
-        var map = L.map('map').setView([-7.793113992317631, 110.3657791662438], 15);
+        var map = L.map('map').setView([-6.972984344293968, 110.40999504554573], 11);
 
         // Basemap
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
+
+
+        // Function to generate a color based on a specific property (e.g., kecamatan name or id)
+        function getColor(kecamatan) {
+            var colors = {
+                'Semarang Timur': '#FF0000', // Red
+                'Gunung Pati': '#00FF00', // Green
+                'Ngaliyan': '#0000FF', // Blue
+                'Tembalang': '#FFFF00', // Yellow
+                'Genuk': '#FF00FF', // Magenta
+                'Pedurungan': '#FFE4B5', //
+                'Semarang Barat': '	#DA70D6', //
+                'Gayamsari': '#98FB98', //
+                'Semarang Tengah': '#AFEEEE', //
+                'Semarang Selatan': '#FFC0CB', //
+                'Semarang Utara': '#C0C0C0', //
+                'Tugu': '#FA8072', //
+                'Candisari': '#EE82EE', //
+                'Banyumanik': '#A0522D', //
+                'Mijen': '#BC8F8F', //
+                'Gajah Mungkur': '#DB7093', // Magenta
+                // Tambahkan lebih banyak kecamatan dan warna sesuai kebutuhan
+            };
+
+            return colors[kecamatan] || '#FFFFFF'; // Default color if kecamatan not found
+        }
+
+        // Create a GeoJSON layer for polygon data
+        var Semarang = L.geoJson(null, {
+            style: function(feature) {
+                var kecamatan = feature.properties.WADMKC; // Change this to your actual property name
+                return {
+                    fillColor: getColor(kecamatan),
+                    weight: 2,
+                    opacity: 1,
+                    color: getColor(kecamatan), // Same color for outline
+                    dashArray: "3",
+                    fillOpacity: 0.5,
+                };
+            },
+            onEachFeature: function(feature, layer) {
+                var content = "KECAMATAN: " + feature.properties.WADMKC + "<br>";
+                layer.bindPopup(content);
+            },
+        });
+
+        // Load GeoJSON
+        fetch('storage/geojson/Administrasi.geojson')
+            .then(response => response.json())
+            .then(data => {
+                L.geoJSON(data, {
+                    style: function(feature) {
+                        var kecamatan = feature.properties.WADMKC;
+                        return {
+                            opacity: 1,
+                            color: getColor(kecamatan),
+                            weight: 2, // Adjust the weight as needed
+                            fillOpacity: 0.5, // With fill color
+                            fillColor: getColor(kecamatan), // Fill color based on kecamatan
+                        };
+                    },
+                    onEachFeature: function(feature, layer) {
+                        var content = "Kecamatan : " + feature.properties.WADMKC;
+                        layer.on({
+                            click: function(e) {
+                                layer.bindPopup(content).openPopup();
+                            },
+                            mouseover: function(e) {
+                                layer.bindPopup("Kecamatan : " + feature.properties.WADMKC, {
+                                    sticky: false
+                                }).openPopup();
+                            },
+                            mouseout: function(e) {
+                                layer.resetStyle(e.target);
+                                map.closePopup();
+                            },
+                        });
+                    }
+                }).addTo(map);
+            })
+            .catch(error => {
+                console.error('Error loading the GeoJSON file:', error);
+            });
+
+
 
 
         /* GeoJSON Point */
