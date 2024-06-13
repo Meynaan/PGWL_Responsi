@@ -26,16 +26,17 @@ SIWARANG merupakan website yang berisikan titik titik lokasi dan juga deskripsi 
 ## Tangkapan Layar Komponen Penting Produk
 
 1. *Antarmuka Utama:*
-   ![Landing Page](komponen/LD1.png)
-   ![Landing Page](komponen/LD2.png)
+   ![Landing Page](./public/komponen/LD1.png)
+   ![Landing Page](./public/komponen/LD2.png)
 
 2. *Halaman Penambahan Data:*
-   ![Map]()
+   ![Map](./public/komponen/Edt.png)
 
-3. *Halaman Dekstop:*
-   ![Deskripsi Wisata]()
+3. *Halaman Dashboard:*
+   ![Deskripsi Wisata](./public/komponen/DB1.png)
+   ![Deskripsi Wisata](./public/komponen/DB2.png)
 
-4. *Tabel Wisata:*
-   ![Cullinary]()
+5. *Tabel Wisata:*
+   ![Cullinary](./public/komponen/TBL.png)
 
 
