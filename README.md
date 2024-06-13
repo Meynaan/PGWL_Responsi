@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -69,3 +70,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 # Responsi_PGWL
 Responsi PGWL
 >>>>>>> 60b8449edfe60728d3739ccccb1df7c82cb92741
+=======
+# PGWL_Responsi
+Tempat Wisata Kota Semarang
+>>>>>>> f3a8a5e9a54c0e40f4cc735137a4337e87720d0e
