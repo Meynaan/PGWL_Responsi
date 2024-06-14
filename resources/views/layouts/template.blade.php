@@ -58,7 +58,7 @@
             <a class="navbar-brand" href="#" style="display: flex; align-items: center;">
                 <img src="{{ asset('images/3.png') }}" alt="Example Image" width="50" height="50"
                     style="margin-right: 10px;">
-                <h2 style="margin-top: 0;" id="h2"> {{ $title }}</h2>
+                <h2 style="margin-top: 0;" id="h2"> SIWARANG</h2>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,23 +69,11 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('index') }}"> <i
                                 class="fa-solid fa-igloo"></i> Home</a>
-                        {{-- </li>
+                        </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('table') }}"><i class="fa-solid fa-table"></i> Tabel Point</a>
-                    </li> --}}
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false"> <i class="fa-solid fa-table"></i>
-                            Table
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('table-point') }}">Tabel Point</a></li>
-                            <li><a class="dropdown-item" href="{{ route('table-polyline') }}">Tabel Polyline</a></li>
-                            {{-- <li><hr class="dropdown-divider"></li> --}}
-                            <li><a class="dropdown-item" href="{{ route('table-polygon') }}">Tabel Polygon</a></li>
-                        </ul>
+                        <a class="nav-link" href="{{ route('table-point') }}"><i class="fa-solid fa-table"></i> Tabel Point</a>
                     </li>
+
 
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#infoModal"> <i

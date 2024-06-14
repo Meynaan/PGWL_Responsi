@@ -6,8 +6,11 @@
 
         color: #fc896d;
     }
+    .bg-pink{
+        font-family:  'Merriweather', serif;
+    }
 </style>
-    
+
 
 <nav x-data="{ open: false }" class="bg-pink border-b border-gray-100" style="background-color:  #fc896d;">
     <!-- Primary Navigation Menu -->

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight ">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
@@ -9,6 +9,9 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!-- Routing -->
+        <link rel="stylesheet" href="assets/plugins/leaflet-routing/leaflet-routing-machine.css" />
 
         <style>
             #map {
@@ -25,16 +28,27 @@
             .card {
                 margin-left: 20px;
                 margin-right: 20px;
+                font-family: 'Merriweather', serif;
+            }
+            .card-body {
+                font-family: 'Merriweather', serif;
             }
 
             .body {
                 background-color: #fc896d;
-                /* background-color: #f83200; */
+                font-family: 'Merriweather', serif;
+            }
+
+            .container {
+                font-family: 'Merriweather', serif;
+            }
+
+            .container-fluid {
+                font-family: 'Merriweather', serif;
             }
         </style>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
-
 
     <div class="container py-12">
         <div class="card shadow">
@@ -66,17 +80,15 @@
         <img src="{{ asset('images/line.png') }}" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="card mb-3 mt-3">
-
         <div class="card-body">
             <div id="map"></div>
         </div>
     </div>
-    </div>
 
-
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
 
     <script>
-        //Map
+        // Map
         var map = L.map('map').setView([-6.972984344293968, 110.40999504554573], 11);
 
         // Basemap
@@ -84,7 +96,6 @@
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-
 
         // Function to generate a color based on a specific property (e.g., kecamatan name or id)
         function getColor(kecamatan) {
@@ -95,7 +106,7 @@
                 'Tembalang': '#FFFF00', // Yellow
                 'Genuk': '#FF00FF', // Magenta
                 'Pedurungan': '#FFE4B5', //
-                'Semarang Barat': '	#DA70D6', //
+                'Semarang Barat': '#DA70D6', //
                 'Gayamsari': '#98FB98', //
                 'Semarang Tengah': '#AFEEEE', //
                 'Semarang Selatan': '#FFC0CB', //
@@ -168,10 +179,7 @@
                 console.error('Error loading the GeoJSON file:', error);
             });
 
-
-
-
-        /* GeoJSON Point */
+        // GeoJSON Point
         var point = L.geoJson(null, {
             onEachFeature: function(feature, layer) {
                 var popupContent = "Name: " + feature.properties.name + "<br>" +
@@ -194,9 +202,8 @@
             map.addLayer(point);
         });
 
-        /* GeoJSON Line */
+        // GeoJSON Line
         var polyline = L.geoJson(null, {
-            /* Style polyline */
             style: function(feature) {
                 return {
                     color: "#ff85d5",
@@ -207,7 +214,6 @@
             onEachFeature: function(feature, layer) {
                 var popupContent = "Nama: " + feature.properties.name + "<br>" +
                     "Deskripsi: " + feature.properties.description + "<br>" +
-
                     "Photo: <img src='{{ asset('storage/images/') }}/" + feature.properties.image +
                     "'class='img-thumbnail' alt='...'>";
                 layer.on({
@@ -227,9 +233,8 @@
             map.addLayer(polyline);
         });
 
-        /* GeoJSON Polygon */
+        // GeoJSON Polygon
         var polygon = L.geoJson(null, {
-            /* Style polygon */
             style: function(feature) {
                 return {
                     color: "#ff8484",
@@ -240,10 +245,10 @@
                 };
             },
             onEachFeature: function(feature, layer) {
-                var popupContent = "Nama: " + feature.properties.name + "<br>" +
-                    "Deskripsi: " + feature.properties.description + "<br>" +
-                    "Photo: <img src='{{ asset('storage/images/') }}/" + feature.properties.image +
-                    "'class='img-thumbnail' alt='...'>";
+                var popupContent = "<h4>" + feature.properties.name + "</h4>" +
+                        "" + feature.properties.description + "<br>" +
+                        "Photo: <br> <img src='{{ asset('storage/images/') }}/" + feature.properties.image +
+                        "'class='img-thumbnail' alt='...' width='200'>";
 
                 layer.on({
                     click: function(e) {
@@ -264,14 +269,21 @@
 
         // Layer control
         var overlayMaps = {
-            "Point": point,
-            "Polyline": polyline,
-            "Polygon": polygon
-
+            "Point": point
         };
 
         var layerControl = L.control.layers(null, overlayMaps).addTo(map);
+
+        // Routing
+        L.Routing.control({
+            position: "bottomright",
+            waypoints: [
+                L.latLng(-6.9891587747722435, 110.49280622036045),
+                L.latLng(-6.987515994875171, 110.50271766728095)
+            ],
+            routeWhileDragging: true,
+            fitSelectedRoutes: false, // Prevents auto-zooming to routes
+            show: true // Prevents showing the routes initially
+        }).addTo(map);
     </script>
-
-
 </x-app-layout>

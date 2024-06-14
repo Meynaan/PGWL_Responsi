@@ -4,6 +4,7 @@
 
 body {
     background-color: #f8e8d9; /* Warna latar belakang untuk seluruh halaman */
+    font-family:  'Merriweather', serif;
 }
 
 .text-center .blockquote p {
